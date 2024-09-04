@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import style from "./style1.css";
+import Login from "./LogIn";
 
 class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
       email: "",
       password: "",
       confirmPassword: "",
@@ -13,10 +13,15 @@ class Signup extends Component {
   }
 
   handleEmail = (event) => {
-    this.setState({ userName: event.target.value });
+    this.setState({ email: event.target.value });
   };
+
   handlePassword = (event) => {
     this.setState({ Password: event.target.value });
+  };
+
+  handleconfirmPassword = (event) => {
+    this.setState({ confirmPassword: event.target.value });
   };
 
   handleSubmit = (event) => {
@@ -37,22 +42,41 @@ class Signup extends Component {
           <div className="text">Sign Up</div>
         </div>
 
-        <div className="input" onChange={this.handleEmail}>
+        <div className="input">
           <label>Email:</label>
-          <input type="text" />
-        </div>
-        <div className="input" onChange={this.handleChange}>
-          <label>Password:</label>
-          <input type="text" />
-        </div>
-        <div className="input" onChange={this.handleChange}>
-          <label>Confirm Password:</label>
-          <input type="text" />
+          <input
+            type="text"
+            value={this.state.email}
+            onChange={this.handleEmail}
+          />
         </div>
 
-        <div className="submitContainer" onChange={this.handleSubmit}>
-          <div className="submit">Sign Up</div>
-          <div className="submit">Login</div>
+        <div className="input">
+          <label>Password:</label>
+          <input
+            type="Password"
+            value={this.state.password}
+            onChange={this.handlePassword}
+          />
+        </div>
+
+        <div className="input">
+          <label>Confirm Password:</label>
+          <input
+            type="Password"
+            value={this.state.confirmPassword}
+            onChange={this.handleconfirmPassword}
+          />
+        </div>
+
+        <div className="submitContainer">
+          <div className="submit" onChange={this.handleSubmit}>
+            Sign Up
+          </div>
+
+          <div className="submit" onClick={<Login />}>
+            Login
+          </div>
         </div>
       </div>
     );

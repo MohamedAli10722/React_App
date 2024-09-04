@@ -1,48 +1,59 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import style from "./style2.css";
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     };
   }
 
-  handleChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value,
-    });
+  handleEmail = (event) => {
+    this.setState({ email: event.target.value });
+  };
+
+  handlePassword = (event) => {
+    this.setState({ Password: event.target.value });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log('User logged in with data:', this.state);
+    console.log("User logged in with data:", this.state);
   };
 
   render() {
     const { email, password } = this.state;
 
     return (
-        <div className="container">
+      <div className="container">
         <div className="header">
           <div className="text">Login</div>
         </div>
 
-        <div className="input" onChange={this.handleChange}>
+        <div className="input">
           <label>Email:</label>
-          <input type="text" />
+          <input
+            type="text"
+            value={this.state.email}
+            onChange={this.handleEmail}
+          />
         </div>
 
-        <div className="input" onChange={this.handleChange}>
+        <div className="input">
           <label>Password:</label>
-          <input type="text" />
+          <input
+            type="text"
+            value={this.state.password}
+            onChange={this.handlePassword}
+          />
         </div>
 
-        <div className="submitContainer" onChange={this.handleSubmit}>
-          <div className="submit">Login</div>
+        <div className="submitContainer">
+          <div className="submit" onChange={this.handleSubmit}>
+            Login
+          </div>
         </div>
       </div>
     );

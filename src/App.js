@@ -22,7 +22,7 @@ function App() {
     {/* <TheProducts /> */}
 
 
-    {/* <Signup/>  */}
+    <Signup/> 
 
     {/* <Login/> */}
 
